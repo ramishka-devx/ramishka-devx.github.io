@@ -1,3 +1,5 @@
+import LazyImage from './LazyImage'
+
 export default function Projects() {
   const projects = [
     {
@@ -55,9 +57,13 @@ export default function Projects() {
           >
             {/* Background Image */}
             <div
-              className="absolute inset-0 w-full h-full bg-cover bg-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-2"
-              style={{ backgroundImage: `url(${project.image})` }}
+              className="absolute inset-0 w-full h-full bg-cover bg-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-2 overflow-hidden"
             >
+              <LazyImage
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
               {/* Dark Overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/80"></div>
             </div>

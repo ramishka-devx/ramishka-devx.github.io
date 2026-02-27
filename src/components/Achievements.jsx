@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaMapPin, FaCalendarAlt, FaUsers } from 'react-icons/fa';
+import LazyImage from './LazyImage';
 
 export default function Achievements() {
     const [selectedAchievement, setSelectedAchievement] = useState(null);
@@ -94,7 +95,7 @@ export default function Achievements() {
                     >
                         {/* Image Preview */}
                         <div className="relative bg-gray-300 dark:bg-gray-700 h-48 overflow-hidden">
-                            <img
+                            <LazyImage
                                 src={achievement.images[0]}
                                 alt={achievement.title}
                                 className="w-full h-full object-cover hover:scale-105 transition duration-300"
@@ -119,8 +120,8 @@ export default function Achievements() {
                             <div className="flex items-center justify-between">
                                 <span className="text-xs text-gray-500 dark:text-gray-500">Click to view details</span>
                                 <div className="border rounded-full border-gray-300 dark:border-gray-600 w-8 aspect-square flex items-center justify-center hover:bg-lime-300 transition">
-                                    <img src="./assets/send-icon.png" alt="" className="w-4 dark:hidden" />
-                                    <img src="./assets/send-icon.png" alt="" className="w-4 hidden dark:block dark:invert" />
+                                    <LazyImage src="./assets/send-icon.png" alt="" className="w-4 dark:hidden" />
+                                    <LazyImage src="./assets/send-icon.png" alt="" className="w-4 hidden dark:block dark:invert" />
                                 </div>
                             </div>
                         </div>
@@ -140,7 +141,7 @@ export default function Achievements() {
                         {/* Image Slider */}
                         <div className="relative bg-gray-900 h-96 flex items-center justify-center overflow-hidden group">
                             {selectedAchievement.images.map((image, index) => (
-                                <img
+                                <LazyImage
                                     key={index}
                                     src={image}
                                     alt={`${selectedAchievement.title} ${index + 1}`}

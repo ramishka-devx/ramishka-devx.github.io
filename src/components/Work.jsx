@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import LazyImage from './LazyImage';
 
 export default function Work() {
     const [selectedProject, setSelectedProject] = useState(null);
@@ -155,7 +156,7 @@ export default function Work() {
                     >
                         {/* Image Slider */}
                         <div className="relative bg-gray-300 dark:bg-gray-700 h-40 overflow-hidden">
-                            <img
+                            <LazyImage
                                 src={project.images[cardImageIndices[project.name] || 0]}
                                 alt={project.name}
                                 className="w-full h-full object-cover transition-opacity duration-500"
@@ -182,8 +183,8 @@ export default function Work() {
                             <div className="mt-auto flex items-center justify-between">
                                 <span className="text-xs text-gray-500 dark:text-gray-500">Click to view details</span>
                                 <div className="border rounded-full border-gray-300 dark:border-gray-600 w-8 aspect-square flex items-center justify-center group-hover:bg-lime-300 transition">
-                                    <img src="./assets/send-icon.png" alt="" className="w-4 dark:hidden" />
-                                    <img src="./assets/send-icon.png" alt="" className="w-4 hidden dark:block dark:invert" />
+                                    <LazyImage src="./assets/send-icon.png" alt="" className="w-4 dark:hidden" />
+                                    <LazyImage src="./assets/send-icon.png" alt="" className="w-4 hidden dark:block dark:invert" />
                                 </div>
                             </div>
                         </div>
@@ -203,7 +204,7 @@ export default function Work() {
                         {/* Image Slider */}
                         <div className="relative bg-gray-900 h-96 flex items-center justify-center overflow-hidden group">
                             {selectedProject.images.map((image, index) => (
-                                <img
+                                <LazyImage
                                     key={index}
                                     src={image}
                                     alt={`${selectedProject.name} ${index + 1}`}
@@ -286,15 +287,15 @@ export default function Work() {
             {!showAll && (
                 <button onClick={() => setShowAll(true)} className="w-max flex items-center justify-center gap-2 text-gray-700 border border-gray-300 dark:border-white/25 hover:bg-slate-100/70 dark:hover:bg-darkHover rounded-full py-2 px-8 mx-auto my-20 duration-300 dark:text-white">
                     Show more
-                    <img src="./assets/right-arrow-bold.png" alt="" className="w-4 dark:hidden" />
-                    <img src="./assets/right-arrow-bold-dark.png" alt="" className="w-4 hidden dark:block" />
+                    <LazyImage src="./assets/right-arrow-bold.png" alt="" className="w-4 dark:hidden" />
+                    <LazyImage src="./assets/right-arrow-bold-dark.png" alt="" className="w-4 hidden dark:block" />
                 </button>
             )}
             {showAll && (
                 <button onClick={() => setShowAll(false)} className="w-max flex items-center justify-center gap-2 text-gray-700 border border-gray-300 dark:border-white/25 hover:bg-slate-100/70 dark:hover:bg-darkHover rounded-full py-2 px-8 mx-auto my-20 duration-300 dark:text-white">
                     Show less
-                    <img src="./assets/right-arrow-bold.png" alt="" className="w-4 dark:hidden rotate-180" />
-                    <img src="./assets/right-arrow-bold-dark.png" alt="" className="w-4 hidden dark:block rotate-180" />
+                    <LazyImage src="./assets/right-arrow-bold.png" alt="" className="w-4 dark:hidden rotate-180" />
+                    <LazyImage src="./assets/right-arrow-bold-dark.png" alt="" className="w-4 hidden dark:block rotate-180" />
                 </button>
             )}
 
