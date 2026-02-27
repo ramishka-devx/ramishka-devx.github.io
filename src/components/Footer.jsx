@@ -1,27 +1,14 @@
 export default function Footer() {
     return (
-        <div className="mt-20">
-            <div className="text-center">
-                <a href="#!">
-                    <img src="/assets/logo.png" alt="" className="w-36 mx-auto mb-2 dark:hidden" />
-                    <img src="/assets/logo_dark.png" alt="" className="w-36 mx-auto mb-2 hidden dark:block" />
-                </a>
-
-                <div className="w-max flex items-center gap-2 mx-auto">
-                    <img src="./assets/mail_icon.png" alt="" className="w-5 dark:hidden" />
-                    <img src="./assets/mail_icon_dark.png" alt="" className="w-5 hidden dark:block" />
-
-                    <a href="mailto:contact@prebuiltui.com">contact@prebuiltui.com</a>
-                </div>
-            </div>
-            <div className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-3">
-                <p>© {new Date().getFullYear()} <a href="https://prebuiltui.com" target="_blank">PrebuiltUI</a> • Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a> • All rights reserved.</p>
-                <ul className="flex items-center gap-10 justify-center mt-4 sm:mt-0">
-                    <li><a href="#!">GitHub</a></li>
-                    <li><a href="#!">LinkedIn</a></li>
-                    <li><a href="#!">Twitter</a></li>
+        <footer className="border-t border-gray-200 dark:border-gray-800 py-10">
+            <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6">
+                <ul className="flex items-center gap-6 text-sm">
+                    <li><a href="#!" className="hover:text-gray-700 dark:hover:text-gray-300 transition">GitHub</a></li>
+                    <li><a href="#!" className="hover:text-gray-700 dark:hover:text-gray-300 transition">LinkedIn</a></li>
+                    <li><a href="#!" className="hover:text-gray-700 dark:hover:text-gray-300 transition">Twitter</a></li>
                 </ul>
+                <p className="text-sm text-gray-600 dark:text-gray-400">© {new Date().getFullYear()} Ramishka. All rights reserved.</p>
             </div>
-        </div>
+        </footer>
     )
 }

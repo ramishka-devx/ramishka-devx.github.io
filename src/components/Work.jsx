@@ -151,7 +151,7 @@ export default function Work() {
                     <div
                         key={project.name}
                         onClick={() => handleSelectProject(project)}
-                        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden cursor-pointer hover:shadow-lg dark:hover:shadow-lg/25 transition duration-300 flex flex-col"
+                        className="bg-white dark:bg-darkTheme border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden cursor-pointer hover:shadow-lg dark:hover:shadow-lg/25 transition duration-300 flex flex-col"
                     >
                         {/* Image Slider */}
                         <div className="relative bg-gray-300 dark:bg-gray-700 h-40 overflow-hidden">
@@ -195,7 +195,7 @@ export default function Work() {
             {selectedProject && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={handleCloseModal}>
                     <div
-                        className="bg-white dark:bg-gray-900 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                        className="bg-white dark:bg-darkTheme rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
                         onClick={(e) => e.stopPropagation()}
                         onWheel={(e) => e.stopPropagation()}
                         onTouchMove={(e) => e.stopPropagation()}

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 
 export default function Navbar() {
     const sideMenuRef = useRef();
@@ -64,16 +65,21 @@ export default function Navbar() {
                 </ul>
 
                 <div className="flex items-center gap-4">
+                <div className="hidden lg:flex items-center gap-3">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-100 dark:hover:bg-darkHover rounded-full transition">
+                            <FaGithub className="w-5 h-5 dark:text-white" />
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-100 dark:hover:bg-darkHover rounded-full transition">
+                            <FaLinkedin className="w-5 h-5 dark:text-white" />
+                        </a>
+                        <a href="https://wa.me" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-gray-100 dark:hover:bg-darkHover rounded-full transition">
+                            <FaWhatsapp className="w-5 h-5 dark:text-white" />
+                        </a>
+                    </div>
                     <button onClick={toggleTheme}>
                         <img src="./assets/moon_icon.png" alt="" className="w-5 dark:hidden" />
                         <img src="./assets/sun_icon.png" alt="" className="w-5 hidden dark:block" />
                     </button>
-
-                    <a href="#contact" className="hidden lg:flex items-center gap-3 px-8 py-1.5 border border-gray-300 hover:bg-slate-100/70 dark:hover:bg-darkHover rounded-full ml-4 font-Ovo dark:border-white/30">
-                        Contact
-                        <img src="./assets/arrow-icon.png" alt="" className="w-3 dark:hidden" />
-                        <img src="./assets/arrow-icon-dark.png" alt="" className="w-3 hidden dark:block" />
-                    </a>
 
                     <button className="block md:hidden ml-3" onClick={openMenu}>
                         <img src="./assets/menu-black.png" alt="" className="w-6 dark:hidden" />
@@ -94,6 +100,21 @@ export default function Navbar() {
                     <li><a href="#services" onClick={closeMenu}>Services</a></li>
                     <li><a href="#work" onClick={closeMenu}>My Work</a></li>
                     <li><a href="#contact" onClick={closeMenu}>Contact me</a></li>
+                    
+                    <div className="border-t border-gray-300 dark:border-gray-600 pt-4 mt-4">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">Follow me</p>
+                        <div className="flex items-center gap-4">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition">
+                                <FaGithub className="w-6 h-6" />
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition">
+                                <FaLinkedin className="w-6 h-6" />
+                            </a>
+                            <a href="https://wa.me" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition">
+                                <FaWhatsapp className="w-6 h-6" />
+                            </a>
+                        </div>
+                    </div>
                 </ul>
             </nav>
         </>

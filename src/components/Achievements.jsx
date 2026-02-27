@@ -82,7 +82,7 @@ export default function Achievements() {
     return (
         <div id="achievements" className="w-full px-[12%] py-10 scroll-mt-20">
             <h4 className="text-center mb-2 text-lg font-Ovo">My Accomplishments</h4>
-            <h2 className="text-center text-5xl font-Ovo">Hackathon Achievements</h2>
+            <h2 className="text-center text-5xl font-Ovo">Achievements</h2>
             <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">Showcasing my competition wins and major accomplishments in hackathons and innovation challenges.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-6">
@@ -90,7 +90,7 @@ export default function Achievements() {
                     <div
                         key={index}
                         onClick={() => handleSelectAchievement(achievement)}
-                        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden cursor-pointer hover:shadow-lg dark:hover:shadow-lg/25 transition duration-300 flex flex-col"
+                        className="bg-white dark:bg-darkTheme border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden cursor-pointer hover:shadow-lg dark:hover:shadow-lg/25 transition duration-300 flex flex-col"
                     >
                         {/* Image Preview */}
                         <div className="relative bg-gray-300 dark:bg-gray-700 h-48 overflow-hidden">
@@ -132,7 +132,7 @@ export default function Achievements() {
             {selectedAchievement && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={handleCloseModal}>
                     <div
-                        className="bg-white dark:bg-gray-900 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                        className="bg-white dark:bg-darkTheme rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
                         onClick={(e) => e.stopPropagation()}
                         onWheel={(e) => e.stopPropagation()}
                         onTouchMove={(e) => e.stopPropagation()}

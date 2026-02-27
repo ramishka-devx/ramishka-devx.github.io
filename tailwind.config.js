@@ -23,9 +23,9 @@ export default {
       },
 
       colors: {
-        lightHover: '#fcf4ff',
-        darkHover: '#2a004a',
-        darkTheme: '#11001F',
+        lightHover: '#f0f0f0',
+        darkHover: '#2a2a2a',
+        darkTheme: '#1a1a1a',
       },
 
       boxShadow: {
