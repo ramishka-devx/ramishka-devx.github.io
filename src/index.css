@@ -1,10 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
   font-family: "Ramishka";
-  src: url("./assets/fonts/awesome.regular.woff2") format("truetype");
+  src: url("./assets/fonts/awesome.regular.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
+}
+
+@layer base {
+  :root {
+    --bg: #f4f7fb;
+    --bg-soft: #eef3f8;
+    --surface: rgba(255, 255, 255, 0.82);
+    --surface-strong: rgba(255, 255, 255, 0.94);
+    --text: #0f172a;
+    --text-muted: #475569;
+    --stroke: rgba(15, 23, 42, 0.12);
+    --brand: #0ea5e9;
+    --brand-alt: #f97316;
+  }
+
+  .dark {
+    --bg: #070b14;
+    --bg-soft: #0b1323;
+    --surface: rgba(15, 23, 42, 0.78);
+    --surface-strong: rgba(15, 23, 42, 0.96);
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --stroke: rgba(148, 163, 184, 0.22);
+    --brand: #38bdf8;
+    --brand-alt: #fb923c;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Manrope", "Segoe UI", sans-serif;
+    background: radial-gradient(1200px 500px at 10% -10%, rgba(14, 165, 233, 0.18), transparent 60%),
+      radial-gradient(900px 500px at 90% 10%, rgba(249, 115, 22, 0.16), transparent 55%),
+      linear-gradient(180deg, var(--bg), var(--bg-soft));
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Syne", "Manrope", sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .section-wrap {
+    @apply w-full px-6 md:px-10 xl:px-[10%] py-16 md:py-20 scroll-mt-28;
+  }
+
+  .section-kicker {
+    @apply text-[11px] md:text-xs uppercase tracking-[0.22em] font-semibold text-slate-500 dark:text-slate-400 mb-3 text-center;
+  }
+
+  .section-title {
+    @apply text-center text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 dark:text-slate-100;
+  }
+
+  .section-subtitle {
+    @apply text-center max-w-3xl mx-auto mt-5 text-[15px] md:text-base leading-7 text-slate-600 dark:text-slate-300;
+  }
+
+  .glass-panel {
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  }
+
+  .glass-panel-strong {
+    background: var(--surface-strong);
+    border: 1px solid var(--stroke);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 25px 70px rgba(15, 23, 42, 0.16);
+  }
+
+  .reveal-up {
+    animation: revealUp 0.7s cubic-bezier(0.2, 0.7, 0, 1) both;
+  }
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

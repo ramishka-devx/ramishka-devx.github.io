@@ -2,75 +2,75 @@ import { useState, useEffect } from "react";
 import { FaMapPin, FaCalendarAlt, FaUsers } from "react-icons/fa";
 import LazyImage from "./LazyImage";
 
+const achievements = [
+  {
+    title: "CodeX 2025",
+    university: "University of Moratuwa",
+    year: "2024",
+    description:
+      "Won 1st Place in the GitHub Pull Request Competition (May 2025) by rapidly identifying bugs, resolving errors, and submitting fixes within a strict time limit",
+    images: [
+      "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773686616/1748988605883_vemupw.jpg",
+    ],
+    award: "First Prize",
+    teamSize: "3 members",
+  },
+  {
+    title: "Algothon 2025",
+    university: "SLIIT",
+    year: "2025",
+    description:
+      "Achieved 2nd Runner-Up in an AI-Restricted Hackathon on HackerRank, competing in time-limited programming challenges where AI assistance was restricted.",
+    images: [
+      "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773686845/1757529147598_tpe589.jpg",
+      "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773686844/1757529147514_rcgnmj.jpg",
+      "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773686843/1757529147593_s5qcxx.jpg",
+    ],
+    award: "Third Prize",
+    teamSize: "3 members",
+  },
+  {
+    title: "CodeRally",
+    university: "IIT",
+    year: "2025",
+    description:
+      "Won 2nd Runner-Up at the 24-Hour HackerRank Hackathon, competing in an intensive time-limited coding competition.",
+    images: [
+      "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773687048/1757832178798_k3lvny.jpg",
+      "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773687438/Untitled_gmszlo.png",
+    ],
+    award: "Third Price",
+    teamSize: "5 members",
+  },
+  {
+    title: "BITCODE 2024",
+    university: "RUSL",
+    year: "2025",
+    description:
+      "Won 3rd Place in a Project-Based Competition by developing a solution based on given requirements within a limited time.",
+    images: [
+      "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773687623/1743537707133_pu0bcb.jpg",
+    ],
+    award: "3rd Place",
+    teamSize: "3 members",
+  },
+  {
+    title: "CODE NIGHT",
+    university: "University of Ruhuna",
+    year: "2025",
+    description:
+      "Won 3rd Place in a Project-Based Competition, applying the Software Development Life Cycle (SDLC) to design and develop a solution based on given requirements within a limited timeframe.",
+    images: [
+      "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773689618/892e6017-abdd-4506-b51d-0d02a64d3604.png", "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773689727/1758290659186_y7hzu3.jpg"
+    ],
+    award: "3rd Place",
+    teamSize: "3 members",
+  },
+];
+
 export default function Achievements() {
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const achievements = [
-    {
-      title: "CodeX 2025",
-      university: "University of Moratuwa",
-      year: "2024",
-      description:
-        "Won 1st Place in the GitHub Pull Request Competition (May 2025) by rapidly identifying bugs, resolving errors, and submitting fixes within a strict time limit",
-      images: [
-        "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773686616/1748988605883_vemupw.jpg",
-      ],
-      award: "First Prize",
-      teamSize: "3 members",
-    },
-    {
-      title: "Algothon 2025",
-      university: "SLIIT",
-      year: "2025",
-      description:
-        "Achieved 2nd Runner-Up in an AI-Restricted Hackathon on HackerRank, competing in time-limited programming challenges where AI assistance was restricted.",
-      images: [
-        "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773686845/1757529147598_tpe589.jpg",
-        "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773686844/1757529147514_rcgnmj.jpg",
-        "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773686843/1757529147593_s5qcxx.jpg",
-      ],
-      award: "Third Prize",
-      teamSize: "3 members",
-    },
-    {
-      title: "CodeRally",
-      university: "IIT",
-      year: "2025",
-      description:
-        "Won 2nd Runner-Up at the 24-Hour HackerRank Hackathon, competing in an intensive time-limited coding competition.",
-      images: [
-        "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773687048/1757832178798_k3lvny.jpg",
-        "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773687438/Untitled_gmszlo.png",
-      ],
-      award: "Third Price",
-      teamSize: "5 members",
-    },
-    {
-      title: "BITCODE 2024",
-      university: "RUSL",
-      year: "2025",
-      description:
-        "Won 3rd Place in a Project-Based Competition by developing a solution based on given requirements within a limited time.",
-      images: [
-        "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773687623/1743537707133_pu0bcb.jpg",
-      ],
-      award: "3rd Place",
-      teamSize: "3 members",
-    },
-    {
-      title: "CODE NIGHT",
-      university: "University of Ruhuna",
-      year: "2025",
-      description:
-        "Won 3rd Place in a Project-Based Competition, applying the Software Development Life Cycle (SDLC) to design and develop a solution based on given requirements within a limited timeframe.",
-      images: [
-        "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773689618/892e6017-abdd-4506-b51d-0d02a64d3604.png", "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773689727/1758290659186_y7hzu3.jpg"
-      ],
-      award: "3rd Place",
-      teamSize: "3 members",
-    },
-  ];
 
   const handleNextImage = () => {
     if (selectedAchievement && selectedAchievement.images) {
@@ -100,7 +100,6 @@ export default function Achievements() {
     setCurrentImageIndex(0);
   };
 
-  // Prevent body scroll when modal is open
   useEffect(() => {
     if (selectedAchievement) {
       document.body.style.overflow = "hidden";
@@ -114,56 +113,55 @@ export default function Achievements() {
   }, [selectedAchievement]);
 
   return (
-    <div id="achievements" className="w-full px-[12%] py-10 scroll-mt-20">
-      <h4 className="text-center mb-2 text-lg font-Ovo">My Accomplishments</h4>
-      <h2 className="text-center text-5xl font-Ovo">Achievements</h2>
-      <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
+    <section id="achievements" className="section-wrap">
+      <p className="section-kicker">My Accomplishments</p>
+      <h2 className="section-title">Achievements</h2>
+      <p className="section-subtitle">
         Showcasing my competition wins and major accomplishments in hackathons
         and innovation challenges.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-6">
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {achievements.map((achievement, index) => (
-          <div
+          <article
             key={index}
             onClick={() => handleSelectAchievement(achievement)}
-            className="bg-white dark:bg-darkTheme border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden cursor-pointer hover:shadow-lg dark:hover:shadow-lg/25 transition duration-300 flex flex-col"
+            className="glass-panel group rounded-2xl overflow-hidden cursor-pointer transition duration-300 hover:-translate-y-1"
           >
-            {/* Image Preview */}
-            <div className="relative bg-gray-300 dark:bg-gray-700 h-48 overflow-hidden">
+            <div className="relative bg-slate-300 dark:bg-slate-700 h-52 overflow-hidden">
               <LazyImage
                 src={achievement.images[0]}
                 alt={achievement.title}
-                className="w-full h-full object-cover hover:scale-105 transition duration-300"
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
               />
-              <div className="absolute top-3 right-3 bg-lime-500 dark:bg-lime-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+              <div className="absolute top-3 right-3 bg-slate-950/85 dark:bg-white/85 text-white dark:text-slate-900 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.1em]">
                 {achievement.award}
               </div>
             </div>
 
-            {/* Content */}
-            <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            <div className="p-5 flex flex-col flex-1">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
                 {achievement.title}
               </h3>
               <div className="flex flex-wrap gap-3 mb-4">
-                <span className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
-                  <FaMapPin className="text-lime-600 dark:text-lime-400" />{" "}
+                <span className="text-sm text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+                  <FaMapPin className="text-sky-600 dark:text-sky-400" />
                   {achievement.university}
                 </span>
-                <span className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
-                  <FaCalendarAlt className="text-lime-600 dark:text-lime-400" />{" "}
+                <span className="text-sm text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+                  <FaCalendarAlt className="text-sky-600 dark:text-sky-400" />
                   {achievement.year}
                 </span>
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-4 flex-1">
+              <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 mb-4 flex-1">
                 {achievement.description}
               </p>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-500 dark:text-gray-500">
+                <span className="text-xs text-slate-500 dark:text-slate-400">
                   Click to view details
                 </span>
-                <div className="border rounded-full border-gray-300 dark:border-gray-600 w-8 aspect-square flex items-center justify-center hover:bg-lime-300 transition">
+                <div className="rounded-full border border-slate-300 dark:border-slate-600 w-8 aspect-square flex items-center justify-center bg-white/80 dark:bg-slate-900/70">
                   <LazyImage
                     src="./assets/send-icon.png"
                     alt=""
@@ -177,24 +175,22 @@ export default function Achievements() {
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
-      {/* Modal */}
       {selectedAchievement && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           onClick={handleCloseModal}
         >
           <div
-            className="bg-white dark:bg-darkTheme rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            className="glass-panel-strong rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
             onWheel={(e) => e.stopPropagation()}
             onTouchMove={(e) => e.stopPropagation()}
           >
-            {/* Image Slider */}
-            <div className="relative bg-gray-900 h-96 flex items-center justify-center overflow-hidden group">
+            <div className="relative bg-slate-900 h-80 md:h-96 flex items-center justify-center overflow-hidden group">
               {selectedAchievement.images.map((image, index) => (
                 <LazyImage
                   key={index}
@@ -206,82 +202,79 @@ export default function Achievements() {
                 />
               ))}
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
 
               {selectedAchievement.images.length > 1 && (
                 <>
                   <button
                     onClick={handlePrevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full p-3 transition-all duration-300 z-10 opacity-0 group-hover:opacity-100"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/25 hover:bg-white/40 backdrop-blur rounded-full w-10 h-10 transition z-10 text-white"
                   >
-                    <span className="text-2xl text-white font-bold">â€¹</span>
+                    <span className="text-xl font-bold">‹</span>
                   </button>
                   <button
                     onClick={handleNextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full p-3 transition-all duration-300 z-10 opacity-0 group-hover:opacity-100"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/25 hover:bg-white/40 backdrop-blur rounded-full w-10 h-10 transition z-10 text-white"
                   >
-                    <span className="text-2xl text-white font-bold">â€º</span>
+                    <span className="text-xl font-bold">›</span>
                   </button>
 
-                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10 bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
+                  <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-10 bg-black/35 backdrop-blur px-4 py-2 rounded-full">
                     {selectedAchievement.images.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
                         className={`transition-all duration-300 rounded-full ${
                           index === currentImageIndex
-                            ? "bg-lime-400 w-3 h-3"
+                            ? "bg-sky-400 w-3 h-3"
                             : "bg-white/50 hover:bg-white/80 w-2 h-2"
                         }`}
                       />
                     ))}
                   </div>
 
-                  <div className="absolute top-4 right-4 text-white text-sm font-medium bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full">
-                    {currentImageIndex + 1} /{" "}
-                    {selectedAchievement.images.length}
+                  <div className="absolute top-4 right-4 text-white text-xs font-semibold bg-black/45 backdrop-blur px-3 py-1 rounded-full">
+                    {currentImageIndex + 1} / {selectedAchievement.images.length}
                   </div>
                 </>
               )}
             </div>
 
-            {/* Content */}
-            <div className="p-8">
-              <div className="flex items-start justify-between mb-2">
-                <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">
+            <div className="p-6 md:p-8">
+              <div className="flex items-start justify-between mb-2 gap-4">
+                <h2 className="text-3xl font-semibold text-slate-900 dark:text-slate-100">
                   {selectedAchievement.title}
                 </h2>
-                <span className="bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 px-3 py-1 rounded-full text-sm font-semibold">
+                <span className="bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-full text-sm font-semibold whitespace-nowrap">
                   {selectedAchievement.award}
                 </span>
               </div>
 
-              <div className="flex flex-wrap gap-4 mb-6 text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex flex-wrap gap-4 mb-6 text-sm text-slate-600 dark:text-slate-300">
                 <span className="flex items-center gap-2">
-                  <FaMapPin className="text-lime-600 dark:text-lime-400" />{" "}
+                  <FaMapPin className="text-sky-600 dark:text-sky-400" />
                   {selectedAchievement.university}
                 </span>
                 <span className="flex items-center gap-2">
-                  <FaCalendarAlt className="text-lime-600 dark:text-lime-400" />{" "}
+                  <FaCalendarAlt className="text-sky-600 dark:text-sky-400" />
                   {selectedAchievement.year}
                 </span>
                 <span className="flex items-center gap-2">
-                  <FaUsers className="text-lime-600 dark:text-lime-400" /> Team:{" "}
+                  <FaUsers className="text-sky-600 dark:text-sky-400" /> Team:
                   {selectedAchievement.teamSize}
                 </span>
               </div>
 
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mt-6 mb-3">
+              <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200 mt-6 mb-3">
                 About
               </h3>
-              <p className="text-gray-700 dark:text-gray-400 leading-relaxed mb-6">
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
                 {selectedAchievement.description}
               </p>
 
               <button
                 onClick={handleCloseModal}
-                className="w-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-medium py-2 px-4 rounded-lg transition"
+                className="w-full bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-medium py-2.5 px-4 rounded-xl transition"
               >
                 Close
               </button>
@@ -289,6 +282,6 @@ export default function Achievements() {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }

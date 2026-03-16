@@ -1,68 +1,30 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import LazyImage from "./LazyImage";
 
-export default function Navbar() {
-  const sideMenuRef = useRef();
-  const navRef = useRef();
-  const navLinkRef = useRef();
+const navItems = [
+  { href: "#top", label: "Home" },
+  { href: "#about", label: "About me" },
+  // { href: "#services", label: "Services" },
+  { href: "#work", label: "Projects" },
+  { href: "#contact", label: "Contact me" },
+];
 
-  const openMenu = () => {
-    sideMenuRef.current.style.transform = "translateX(-16rem)";
-  };
-  const closeMenu = () => {
-    sideMenuRef.current.style.transform = "translateX(16rem)";
-  };
+export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
-
-    if (document.documentElement.classList.contains("dark")) {
-      localStorage.theme = "dark";
-    } else {
-      localStorage.theme = "light";
-    }
+    localStorage.theme = document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (scrollY > 50) {
-        navRef.current.classList.add(
-          "bg-white",
-          "bg-opacity-50",
-          "backdrop-blur-lg",
-          "shadow-sm",
-          "dark:bg-darkTheme",
-          "dark:shadow-white/20",
-        );
-        navLinkRef.current.classList.remove(
-          "bg-white",
-          "shadow-sm",
-          "bg-opacity-50",
-          "dark:border",
-          "dark:border-white/30",
-          "dark:bg-transparent",
-        );
-      } else {
-        navRef.current.classList.remove(
-          "bg-white",
-          "bg-opacity-50",
-          "backdrop-blur-lg",
-          "shadow-sm",
-          "dark:bg-darkTheme",
-          "dark:shadow-white/20",
-        );
-        navLinkRef.current.classList.add(
-          "bg-white",
-          "shadow-sm",
-          "bg-opacity-50",
-          "dark:border",
-          "dark:border-white/30",
-          "dark:bg-transparent",
-        );
-      }
-    });
-
-    // -------- light mode and dark mode -----------
+    const onScroll = () => setIsScrolled(window.scrollY > 32);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     if (
       localStorage.theme === "dark" ||
@@ -73,204 +35,136 @@ export default function Navbar() {
     } else {
       document.documentElement.classList.remove("dark");
     }
+
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <>
-      <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden">
-        <LazyImage
-          src="./assets/header-bg-color.png"
-          alt=""
-          className="w-full"
-        />
-      </div>
-
-      <nav
-        ref={navRef}
-        className="w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50"
+    <nav
+      className={`fixed inset-x-0 top-0 z-50 px-6 md:px-10 xl:px-[10%] py-4 transition-all duration-300 ${
+        isScrolled ? "pt-3" : "pt-5"
+      }`}
+    >
+      <div
+        className={`mx-auto flex items-center justify-between rounded-2xl px-4 md:px-6 py-3 transition-all duration-300 ${
+          isScrolled
+            ? "glass-panel-strong"
+            : "bg-white/45 dark:bg-slate-900/45 border border-white/40 dark:border-white/10 backdrop-blur"
+        }`}
       >
-        <a href="#!" className="flex items-center gap-4">
-          <span className="text-2xl font-ramishka tracking-wide dark:text-white">
+        <a href="#top" className="flex items-center gap-3">
+          <span className="text-xl md:text-2xl font-ramishka tracking-wide text-slate-900 dark:text-white">
             Ramishka.me
           </span>
         </a>
 
-        <ul
-          ref={navLinkRef}
-          className="hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white shadow-sm bg-opacity-50 font-Ovo dark:border dark:border-white/30 dark:bg-transparent "
-        >
-          <li>
-            <a
-              className="hover:text-gray-500 dark:hover:text-gray-300 transition"
-              href="#top"
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a
-              className="hover:text-gray-500 dark:hover:text-gray-300 transition"
-              href="#about"
-            >
-              About me
-            </a>
-          </li>
-          <li>
-            <a
-              className="hover:text-gray-500 dark:hover:text-gray-300 transition"
-              href="#services"
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a
-              className="hover:text-gray-500 dark:hover:text-gray-300 transition"
-              href="#work"
-            >
-              My Work
-            </a>
-          </li>
-          <li>
-            <a
-              className="hover:text-gray-500 dark:hover:text-gray-300 transition"
-              href="#contact"
-            >
-              Contact me
-            </a>
-          </li>
+        <ul className="hidden md:flex items-center gap-1 rounded-full border border-slate-200/70 dark:border-slate-700/70 bg-white/75 dark:bg-slate-900/50 px-2 py-1.5">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className="px-4 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 transition"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
 
-        <div className="flex items-center gap-4">
-          <div className="hidden lg:flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
+          <div className="hidden lg:flex items-center gap-1">
             <a
               href="https://github.com/ramishka-devx"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 hover:bg-gray-100 dark:hover:bg-darkHover rounded-full transition"
+              className="p-2.5 rounded-full text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 transition"
             >
-              <FaGithub className="w-5 h-5 dark:text-white" />
+              <FaGithub className="w-4.5 h-4.5" />
             </a>
             <a
               href="https://linkedin.com/in/ramishka-thennakoon"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 hover:bg-gray-100 dark:hover:bg-darkHover rounded-full transition"
+              className="p-2.5 rounded-full text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 transition"
             >
-              <FaLinkedin className="w-5 h-5 dark:text-white" />
+              <FaLinkedin className="w-4.5 h-4.5" />
             </a>
             <a
               href="https://wa.me/qr/526DPGYELPHPC1"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 hover:bg-gray-100 dark:hover:bg-darkHover rounded-full transition"
+              className="p-2.5 rounded-full text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 transition"
             >
-              <FaWhatsapp className="w-5 h-5 dark:text-white" />
+              <FaWhatsapp className="w-4.5 h-4.5" />
             </a>
           </div>
-          <button onClick={toggleTheme}>
-            <LazyImage
-              src="./assets/moon_icon.png"
-              alt=""
-              className="w-5 dark:hidden"
-            />
-            <LazyImage
-              src="./assets/sun_icon.png"
-              alt=""
-              className="w-5 hidden dark:block"
-            />
+
+          <button
+            onClick={toggleTheme}
+            className="p-1.5 rounded-full border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-900/5 dark:hover:bg-white/10 transition"
+            aria-label="Toggle theme"
+          >
+            <LazyImage src="./assets/moon_icon.png" alt="" className="w-4 dark:hidden" />
+            <LazyImage src="./assets/sun_icon.png" alt="" className="w-4 hidden dark:block" />
           </button>
 
-          <button className="block md:hidden ml-3" onClick={openMenu}>
-            <LazyImage
-              src="./assets/menu-black.png"
-              alt=""
-              className="w-6 dark:hidden"
-            />
-            <LazyImage
-              src="./assets/menu-white.png"
-              alt=""
-              className="w-6 hidden dark:block"
-            />
+          <button
+            className="md:hidden p-2 rounded-full border border-slate-200/80 dark:border-slate-700/80"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <LazyImage src="./assets/menu-black.png" alt="" className="w-5 dark:hidden" />
+            <LazyImage src="./assets/menu-white.png" alt="" className="w-5 hidden dark:block" />
           </button>
         </div>
-        {/* -- ----- mobile menu ------  -- */}
-        <ul
-          ref={sideMenuRef}
-          className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 font-Ovo dark:bg-darkHover dark:text-white"
+      </div>
+
+      <div
+        className={`md:hidden fixed inset-0 z-50 bg-slate-950/45 backdrop-blur-sm transition ${
+          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setIsMenuOpen(false)}
+      >
+        <div
+          className={`absolute right-0 top-0 h-full w-72 glass-panel-strong p-6 transition-transform duration-300 ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          onClick={(event) => event.stopPropagation()}
         >
-          <div className="absolute right-6 top-6" onClick={closeMenu}>
-            <LazyImage
-              src="./assets/close-black.png"
-              alt=""
-              className="w-5 cursor-pointer dark:hidden"
-            />
-            <LazyImage
-              src="./assets/close-white.png"
-              alt=""
-              className="w-5 cursor-pointer hidden dark:block"
-            />
-          </div>
+          <button
+            className="ml-auto mb-6 block p-1"
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <LazyImage src="./assets/close-black.png" alt="" className="w-4 dark:hidden" />
+            <LazyImage src="./assets/close-white.png" alt="" className="w-4 hidden dark:block" />
+          </button>
 
-          <li>
-            <a href="#top" onClick={closeMenu}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#about" onClick={closeMenu}>
-              About me
-            </a>
-          </li>
-          <li>
-            <a href="#services" onClick={closeMenu}>
-              Services
-            </a>
-          </li>
-          <li>
-            <a href="#work" onClick={closeMenu}>
-              My Work
-            </a>
-          </li>
-          <li>
-            <a href="#contact" onClick={closeMenu}>
-              Contact me
-            </a>
-          </li>
+          <ul className="space-y-2">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-900/5 dark:hover:bg-white/10 transition"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-          <div className="border-t border-gray-300 dark:border-gray-600 pt-4 mt-4">
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-              Follow me
-            </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-70 transition"
-              >
-                <FaGithub className="w-6 h-6" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-70 transition"
-              >
-                <FaLinkedin className="w-6 h-6" />
-              </a>
-              <a
-                href="https://wa.me"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-70 transition"
-              >
-                <FaWhatsapp className="w-6 h-6" />
-              </a>
+          <div className="mt-8 border-t border-slate-200/80 dark:border-slate-700/80 pt-5">
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400 mb-3">Follow me</p>
+            <div className="flex items-center gap-3">
+              <a href="https://github.com/ramishka-devx" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-900/5 dark:hover:bg-white/10 transition"><FaGithub /></a>
+              <a href="https://linkedin.com/in/ramishka-thennakoon" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-900/5 dark:hover:bg-white/10 transition"><FaLinkedin /></a>
+              <a href="https://wa.me/qr/526DPGYELPHPC1" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-900/5 dark:hover:bg-white/10 transition"><FaWhatsapp /></a>
             </div>
           </div>
-        </ul>
-      </nav>
-    </>
+        </div>
+      </div>
+    </nav>
   );
 }
+
