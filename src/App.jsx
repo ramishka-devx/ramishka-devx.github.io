@@ -16,9 +16,9 @@ export default function App() {
             <LenisScroll />
             <Navbar />
             <Header />
+            <About />
             <Work />
             <Achievements />
-            {/* <About /> */}
             <ToolsTechnologies />
             {/* <Projects /> */}
             {/* <Services /> */}

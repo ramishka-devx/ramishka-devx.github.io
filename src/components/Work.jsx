@@ -7,88 +7,133 @@ export default function Work() {
     const [cardImageIndices, setCardImageIndices] = useState({});
     const [showAll, setShowAll] = useState(false);
 
-    const work = [
-        {
-            name: 'Frontend project',
-            description: 'Modern web design with React',
-            category: 'Web Design',
-            fullDescription: 'A comprehensive frontend project built with React and Tailwind CSS, featuring responsive design and smooth animations.',
-            images: ['./assets/work-1.png', './assets/work-2.png'],
-            technologies: ['React', 'Tailwind CSS', 'JavaScript'],
-            slideInterval: 3000,
-            link: '',
-        },
-        {
-            name: 'Geo based app',
-            description: 'Location-aware mobile application',
-            category: 'Mobile App',
-            fullDescription: 'A mobile application that leverages geolocation APIs to provide location-based services and recommendations.',
-            images: ['./assets/work-2.png', './assets/work-1.png'],
-            technologies: ['React Native', 'Geolocation API', 'Node.js'],
-            slideInterval: 4000,
-            link: '',
-        },
-        {
-            name: 'Photography site',
-            description: 'Portfolio website for photographers',
-            category: 'Web Design',
-            fullDescription: 'A stunning portfolio website designed for photographers to showcase their work with an elegant gallery and smooth navigation.',
-            images: ['./assets/work-3.png', './assets/work-4.png'],
-            technologies: ['React', 'Framer Motion', 'Tailwind CSS'],
-            slideInterval: 2500,
-            link: '',
-        },
-        {
-            name: 'UI/UX designing',
-            description: 'User interface and experience design',
-            category: 'UI/UX Design',
-            fullDescription: 'Complete UI/UX design system including wireframes, prototypes, and high-fidelity mockups for web applications.',
-            images: ['./assets/work-4.png', './assets/work-3.png'],
-            technologies: ['Figma', 'Adobe XD', 'Prototyping'],
-            slideInterval: 3500,
-            link: '',
-        },
-        {
-            name: 'E-Commerce Platform',
-            description: 'Full-stack online shopping experience',
-            category: 'Web Development',
-            fullDescription: 'A complete e-commerce platform with product catalog, shopping cart, payment integration, and user management system.',
-            images: ['./assets/work-1.png', './assets/work-3.png'],
-            technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-            slideInterval: 3200,
-            link: '',
-        },
-        {
-            name: 'Social Media Dashboard',
-            description: 'Analytics and content management tool',
-            category: 'Web Design',
-            fullDescription: 'A comprehensive dashboard for managing social media accounts with real-time analytics, scheduling, and engagement metrics.',
-            images: ['./assets/work-2.png', './assets/work-4.png'],
-            technologies: ['React', 'Chart.js', 'Firebase', 'Tailwind CSS'],
-            slideInterval: 2800,
-            link: '',
-        },
-        {
-            name: 'Mobile Learning App',
-            description: 'Interactive educational platform',
-            category: 'Mobile App',
-            fullDescription: 'An innovative mobile learning application featuring interactive lessons, quizzes, progress tracking, and gamification elements.',
-            images: ['./assets/work-3.png', './assets/work-1.png'],
-            technologies: ['React Native', 'Redux', 'Firebase', 'JavaScript'],
-            slideInterval: 3800,
-            link: '',
-        },
-        {
-            name: 'Real Estate Portal',
-            description: 'Property listing and search platform',
-            category: 'Web Design',
-            fullDescription: 'A modern real estate platform with advanced filtering, virtual tours, mortgage calculator, and agent management system.',
-            images: ['./assets/work-4.png', './assets/work-2.png'],
-            technologies: ['React', 'Three.js', 'Node.js', 'PostgreSQL'],
-            slideInterval: 3100,
-            link: '',
+    const urlPattern = /((?:https?:\/\/)?(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/[^\s),]*)?)/gi;
+
+    const renderTextWithLinks = (text) => {
+        const matches = [...text.matchAll(urlPattern)];
+
+        if (!matches.length) {
+            return text;
         }
-    ];
+
+        const parts = [];
+        let lastIndex = 0;
+
+        matches.forEach((match, index) => {
+            const value = match[0];
+            const start = match.index || 0;
+            const end = start + value.length;
+            const href = value.startsWith('http') ? value : `https://${value}`;
+
+            if (start > lastIndex) {
+                parts.push(text.slice(lastIndex, start));
+            }
+
+            parts.push(
+                <a
+                    key={`${value}-${index}`}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-lime-600 dark:text-lime-400 underline underline-offset-4 decoration-2 hover:text-lime-700 dark:hover:text-lime-300 transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    {value}
+                </a>
+            );
+
+            lastIndex = end;
+        });
+
+        if (lastIndex < text.length) {
+            parts.push(text.slice(lastIndex));
+        }
+
+        return parts;
+    };
+
+    const work = [
+    {
+        name: 'Nivra LMS',
+        description: 'SaaS Learning Management System for 7,000+ users',
+        category: 'Web Development',
+        fullDescription: 'Full-stack SaaS LMS serving 7,000+ active users across two live client platforms (ewinners.lk, alguidance.lk). Architected and deployed end-to-end including backend, frontend, client management, and a companion mobile app on DigitalOcean.',
+        images: ['https://res.cloudinary.com/duiyr5sr0/image/upload/v1773644144/alguidence_ymfaoo.jpg', 'https://res.cloudinary.com/duiyr5sr0/image/upload/v1773647525/e56b24f4-42e5-45ae-8c22-f8082f83a592.png', 'https://res.cloudinary.com/duiyr5sr0/image/upload/v1773645106/4c637128-714b-4d1a-80a4-e873bf4e73ad.png'],
+        technologies: ['Node.js', 'Express.js', 'React.js', 'React Native', 'MySQL', 'Firebase', 'DigitalOcean'],
+        slideInterval: 3000,
+        link: 'https://ewinners.lk',
+    },
+    {
+        name: 'Entrack IoT',
+        description: 'Industrial IoT smart power monitoring platform',
+        category: 'Web Development',
+        fullDescription: 'Industrial IoT power monitoring platform built with microservices architecture. Designed the complete backend, all RESTful APIs, and led a cross-functional team. Currently live in first production phase with real-world industrial deployment.',
+        images: ['https://res.cloudinary.com/duiyr5sr0/image/upload/v1773643139/1_he1meo.png', './assets/work-3.png'],
+        technologies: ['Spring Boot', 'React', 'PostgreSQL', 'Apache Kafka', 'Microservices'],
+        slideInterval: 3200,
+        link: '',
+    },
+    {
+        name: 'IEEE EMI Prediction',
+        description: 'Physics-aware generative AI for PCB EMI prediction',
+        category: 'AI / ML',
+        fullDescription: 'Globally shortlisted at IEEE IES Generative AI Challenge 2026 — top teams from 575 submissions across 57 countries. Researching a physics-informed generative AI surrogate model to replace expensive electromagnetic simulations for real-time EMI risk prediction in PCB layouts.',
+        images: ['https://res.cloudinary.com/duiyr5sr0/image/upload/v1773681019/download_2_vtytrd.png'],
+        technologies: ['Python', 'Generative AI', 'Physics-Aware Modeling', 'Deep Learning'],
+        slideInterval: 3500,
+        link: '',
+    },
+    {
+        name: 'Nivra Power',
+        description: 'AI-powered NILM energy disaggregation system',
+        category: 'AI / ML',
+        fullDescription: 'AI-powered Non-Intrusive Load Monitoring (NILM) system that disaggregates appliance-level energy consumption from a single factory-wide IoT sensor. Features end-to-end ML pipeline, real-time inference, and live monitoring dashboards for industrial clients.',
+        images: ['https://res.cloudinary.com/duiyr5sr0/image/upload/v1773682496/Untitled_yh2med.png','https://res.cloudinary.com/duiyr5sr0/image/upload/v1773682103/1769262599673_nsbs1i.jpg'],
+        technologies: ['Python', 'Machine Learning', 'TimescaleDB', 'InfluxDB', 'IoT', 'Spring Boot'],
+        slideInterval: 2800,
+        link: '',
+    },
+    {
+        name: 'SerenGuard',
+        description: 'Maritime vessel anomaly detection system',
+        category: 'AI / ML',
+        fullDescription: 'Maritime surveillance platform detecting suspicious vessel behavior in Sri Lankan waters using real AIS tracking data. Built spatio-temporal feature engineering pipelines, ML classification models, and integrated PostGIS for geospatial queries and real-time alerting.',
+        images: ['https://res.cloudinary.com/duiyr5sr0/image/upload/v1773684149/dd862dec-f80c-46b9-ba00-80b58e306022.png','https://res.cloudinary.com/duiyr5sr0/image/upload/v1773683455/fd208464-f0e9-45c4-8625-701330c31c61.png'],
+        technologies: ['Python', 'Scikit-learn', 'AIS Data', 'PostGIS', 'REST API'],
+        slideInterval: 3000,
+        link: '',
+    },
+    {
+        name: 'Nivra-e',
+        description: 'E-commerce SaaS platform for medical equipment',
+        category: 'Web Development',
+        fullDescription: 'Full-stack e-commerce SaaS platform for a medical equipment client, live at medtools.lk, serving healthcare students and professionals nationwide. Handled backend architecture, frontend logic, client management, and full production deployment.',
+        images: ['https://res.cloudinary.com/duiyr5sr0/image/upload/v1773682693/d1b1956a-5e95-4807-95ec-b9b31606f01d.png'],
+        technologies: ['Node.js', 'Express.js', 'React.js', 'MySQL', 'Nginx', 'DigitalOcean'],
+        slideInterval: 3200,
+        link: 'https://medtools.lk',
+    },
+    {
+        name: 'Mega Drone Swarm',
+        description: 'Autonomous 10-drone swarm system at Rextro 2025',
+        category: 'Embedded Systems',
+        fullDescription: 'Led firmware development for a 10-drone swarm system showcased at Rextro 2025, managing a 20-member team across hardware and software tracks. Handled PID tuning, firmware optimization, telemetry integration, and swarm coordination.',
+        images: ['https://res.cloudinary.com/duiyr5sr0/image/upload/v1773684386/1766505812515_tejwsi.jpg','https://res.cloudinary.com/duiyr5sr0/image/upload/v1773684383/1766505820918_lr0agd.jpg','https://res.cloudinary.com/duiyr5sr0/image/upload/v1773684558/1766505822144_1_tftizh.jpg'],
+        technologies: ['ArduPilot', 'LibrePilot', 'PID Tuning', 'Telemetry', 'Firmware'],
+        slideInterval: 3800,
+        link: '',
+    },
+    {
+        name: 'Faculty Complaint System',
+        description: 'Role-based complaint and issue tracking system',
+        category: 'Web Development',
+        fullDescription: 'Role-based complaint management and issue-tracking system built for the Faculty of Engineering, University of Ruhuna. Currently in active production use across the faculty.',
+        images: ['https://res.cloudinary.com/duiyr5sr0/image/upload/v1773684866/b80a6f0d-2340-49ca-8dd2-f6ac931e7a02.png'],
+        technologies: ['Node.js', 'React', 'PostgreSQL', 'REST API'],
+        slideInterval: 3000,
+        link: '',
+    },
+];
 
     const displayedProjects = showAll ? work : work.slice(0, 4);
 
@@ -259,7 +304,19 @@ export default function Work() {
                             <p className="text-sm font-medium text-lime-600 dark:text-lime-400 mb-4">{selectedProject.category}</p>
 
                             <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mt-6 mb-2">About</h3>
-                            <p className="text-gray-700 dark:text-gray-400 leading-relaxed mb-6">{selectedProject.fullDescription}</p>
+                            <p className="text-gray-700 dark:text-gray-400 leading-relaxed mb-6">{renderTextWithLinks(selectedProject.fullDescription)}</p>
+
+                            {selectedProject.link && (
+                                <a
+                                    href={selectedProject.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 font-medium hover:bg-lime-200 dark:hover:bg-lime-900/50 transition-colors"
+                                >
+                                    Visit live project
+                                    <span aria-hidden="true">↗</span>
+                                </a>
+                            )}
 
                             <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Technologies</h3>
                             <div className="flex flex-wrap gap-2 mb-6">
