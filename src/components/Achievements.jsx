@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaMapPin, FaCalendarAlt, FaUsers } from "react-icons/fa";
+import { CalendarDays, ChevronLeft, ChevronRight, MapPin, Users } from "lucide-react";
 import LazyImage from "./LazyImage";
 
 const achievements = [
@@ -26,7 +26,7 @@ const achievements = [
       "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773686844/1757529147514_rcgnmj.jpg",
       "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773686843/1757529147593_s5qcxx.jpg",
     ],
-    award: "Third Prize",
+    award: "3RD PLACE",
     teamSize: "3 members",
   },
   {
@@ -39,7 +39,7 @@ const achievements = [
       "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773687048/1757832178798_k3lvny.jpg",
       "https://res.cloudinary.com/duiyr5sr0/image/upload/v1773687438/Untitled_gmszlo.png",
     ],
-    award: "Third Price",
+    award: "3RD PLACE",
     teamSize: "5 members",
   },
   {
@@ -146,11 +146,11 @@ export default function Achievements() {
               </h3>
               <div className="flex flex-wrap gap-3 mb-4">
                 <span className="text-sm text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
-                  <FaMapPin className="text-sky-600 dark:text-sky-400" />
+                  <MapPin className="w-4 h-4 text-sky-600 dark:text-sky-400" />
                   {achievement.university}
                 </span>
                 <span className="text-sm text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
-                  <FaCalendarAlt className="text-sky-600 dark:text-sky-400" />
+                  <CalendarDays className="w-4 h-4 text-sky-600 dark:text-sky-400" />
                   {achievement.year}
                 </span>
               </div>
@@ -210,13 +210,13 @@ export default function Achievements() {
                     onClick={handlePrevImage}
                     className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/25 hover:bg-white/40 backdrop-blur rounded-full w-10 h-10 transition z-10 text-white"
                   >
-                    <span className="text-xl font-bold">‹</span>
+                    <ChevronLeft className="w-5 h-5 mx-auto" aria-hidden="true" />
                   </button>
                   <button
                     onClick={handleNextImage}
                     className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/25 hover:bg-white/40 backdrop-blur rounded-full w-10 h-10 transition z-10 text-white"
                   >
-                    <span className="text-xl font-bold">›</span>
+                    <ChevronRight className="w-5 h-5 mx-auto" aria-hidden="true" />
                   </button>
 
                   <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-10 bg-black/35 backdrop-blur px-4 py-2 rounded-full">
@@ -252,15 +252,15 @@ export default function Achievements() {
 
               <div className="flex flex-wrap gap-4 mb-6 text-sm text-slate-600 dark:text-slate-300">
                 <span className="flex items-center gap-2">
-                  <FaMapPin className="text-sky-600 dark:text-sky-400" />
+                  <MapPin className="w-4 h-4 text-sky-600 dark:text-sky-400" />
                   {selectedAchievement.university}
                 </span>
                 <span className="flex items-center gap-2">
-                  <FaCalendarAlt className="text-sky-600 dark:text-sky-400" />
+                  <CalendarDays className="w-4 h-4 text-sky-600 dark:text-sky-400" />
                   {selectedAchievement.year}
                 </span>
                 <span className="flex items-center gap-2">
-                  <FaUsers className="text-sky-600 dark:text-sky-400" /> Team:
+                  <Users className="w-4 h-4 text-sky-600 dark:text-sky-400" /> Team:
                   {selectedAchievement.teamSize}
                 </span>
               </div>

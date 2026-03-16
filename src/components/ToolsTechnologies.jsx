@@ -1,6 +1,7 @@
 import {
   FaAws,
   FaCode,
+  FaDatabase,
   FaDocker,
   FaGit,
   FaGithub,
@@ -14,13 +15,17 @@ import {
 } from 'react-icons/fa';
 import {
   SiAnsible,
+  SiApachekafka,
   SiEslint,
   SiExpress,
   SiFastapi,
+  SiFirebase,
   SiJenkins,
   SiJira,
+  SiMysql,
   SiNestjs,
   SiNginx,
+  SiPostgresql,
   SiPostman,
   SiPrettier,
   SiPytorch,
@@ -42,7 +47,12 @@ const technologies = [
   {
     category: 'Backend',
     icon: FaServer,
-    tools: ['Node.js', 'Express.js', 'NestJS', 'Springboot'],
+    tools: ['Node.js', 'Express.js', 'NestJS', 'Springboot', 'Kafka'],
+  },
+  {
+    category: 'Databases',
+    icon: FaDatabase,
+    tools: ['MySQL', 'PostgreSQL', 'TimescaleDB', 'PostGIS', 'Firebase'],
   },
   {
     category: 'DevOps & Infrastructure',
@@ -53,11 +63,6 @@ const technologies = [
     category: 'AI & Data Science',
     icon: FaPython,
     tools: ['Python', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'FastAPI'],
-  },
-  {
-    category: 'Tools & Collaboration',
-    icon: FaGithub,
-    tools: ['Git', 'GitHub', 'Jira', 'Postman', 'ESLint', 'Prettier'],
   },
   {
     category: 'Drones & UAV',
@@ -78,6 +83,12 @@ const toolIconMap = {
   'Express.js': SiExpress,
   NestJS: SiNestjs,
   Springboot: SiSpringboot,
+  Kafka: SiApachekafka,
+  MySQL: SiMysql,
+  PostgreSQL: SiPostgresql,
+  TimescaleDB: FaDatabase,
+  PostGIS: FaDatabase,
+  Firebase: SiFirebase,
   Docker: FaDocker,
   Nginx: SiNginx,
   Jenkins: SiJenkins,
@@ -155,4 +166,3 @@ export default function ToolsTechnologies() {
     </section>
   );
 }
-

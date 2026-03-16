@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import LazyImage from './LazyImage';
 
 const work = [
@@ -17,7 +18,7 @@ const work = [
     description: 'Industrial IoT smart power monitoring platform',
     category: 'Web Development',
     fullDescription: 'Industrial IoT power monitoring platform built with microservices architecture. Designed the complete backend, all RESTful APIs, and led a cross-functional team. Currently live in first production phase with real-world industrial deployment.',
-    images: ['https://res.cloudinary.com/duiyr5sr0/image/upload/v1773643139/1_he1meo.png', './assets/work-3.png'],
+    images: ['https://res.cloudinary.com/duiyr5sr0/image/upload/v1773643139/1_he1meo.png'],
     technologies: ['Spring Boot', 'React', 'PostgreSQL', 'Apache Kafka', 'Microservices'],
     slideInterval: 3200,
     link: '',
@@ -262,13 +263,13 @@ export default function Work() {
                     onClick={handlePrevImage}
                     className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/25 hover:bg-white/40 backdrop-blur rounded-full w-10 h-10 transition z-10 text-white"
                   >
-                    <span className="text-xl font-bold">�</span>
+                    <ChevronLeft className="w-5 h-5 mx-auto" aria-hidden="true" />
                   </button>
                   <button
                     onClick={handleNextImage}
                     className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/25 hover:bg-white/40 backdrop-blur rounded-full w-10 h-10 transition z-10 text-white"
                   >
-                    <span className="text-xl font-bold">�</span>
+                    <ChevronRight className="w-5 h-5 mx-auto" aria-hidden="true" />
                   </button>
 
                   <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-10 bg-black/35 backdrop-blur px-4 py-2 rounded-full">
@@ -305,7 +306,7 @@ export default function Work() {
                   className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 font-medium hover:bg-sky-200 dark:hover:bg-sky-900/50 transition-colors"
                 >
                   Visit live project
-                  <span aria-hidden="true">?</span>
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
                 </a>
               )}
 
