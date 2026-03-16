@@ -36,7 +36,7 @@ export default function About() {
           <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
             <p className="text-xs uppercase tracking-[0.2em] text-white/80">Computer Engineer</p>
             <h3 className="text-2xl md:text-3xl mt-1 font-semibold">Ramishka Thennakoon</h3>
-            <p className="mt-2 text-sm md:text-base text-white/90">Designing digital systems where software, hardware, and AI work together.</p>
+            <p className="mt-2 text-sm md:text-base text-white/90">Faculty of Engineering, UOR</p>
           </div>
         </div>
 

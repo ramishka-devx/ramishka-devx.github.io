@@ -1,73 +1,103 @@
-export default function ToolsTechnologies() {
-  const technologies = [
-    {
-      category: "Frontend",
-      icon: "frontend",
-      tools: [
-        { name: "React", icon: "FaReact" },
-        { name: "HTML", icon: "FaHtml5" },
-        { name: "CSS", icon: "FaCss3Alt" },
-        { name: "JavaScript", icon: "FaJsSquare" },
-        { name: "TypeScript", icon: "SiTypescript" },
-        { name: "Tailwind CSS", icon: "SiTailwindcss" },
-        { name: "Vite", icon: "SiVite" },
-      ]
-    },
-    {
-      category: "Backend",
-      icon: "backend",
-      tools: [
-        { name: "Node.js", icon: "FaNodeJs" },
-        { name: "Express.js", icon: "SiExpress" },
-        { name: "NestJS", icon: "SiNestjs" },
-        { name: "Springboot", icon: "SiSpringboot" },
-      ]
-    },
-    {
-      category: "DevOps & Infrastructure",
-      icon: "devops",
-      tools: [
-        { name: "Docker", icon: "FaDocker" },
-        { name: "Nginx", icon: "SiNginx" },
-        { name: "Jenkins", icon: "SiJenkins" },
-        { name: "Ansible", icon: "SiAnsible" },
-        { name: "AWS", icon: "FaAws" },
-        { name: "Terraform", icon: "SiTerraform" },
-      ]
-    },
-    {
-      category: "AI & Data Science",
-      icon: "ai",
-      tools: [
-        { name: "Python", icon: "FaPython" },
-        { name: "TensorFlow", icon: "SiTensorflow" },
-        { name: "PyTorch", icon: "SiPytorch" },
-        { name: "Scikit-learn", icon: "SiScikitlearn" },
-        { name: "FastAPI", icon: "SiFastapi" },
-      ]
-    },
-    {
-      category: "Tools & Collaboration",
-      icon: "tools",
-      tools: [
-        { name: "Git", icon: "FaGit" },
-        { name: "GitHub", icon: "FaGithub" },
-        { name: "Jira", icon: "SiJira" },
-        { name: "Postman", icon: "SiPostman" },
-        { name: "ESLint", icon: "SiEslint" },
-        { name: "Prettier", icon: "SiPrettier" },
-      ]
-    },
-    {
-      category: "Drones & UAV",
-      icon: "drones",
-      tools: [
-        { name: "ArduPilot", icon: "FaGit" },
-        { name: "LibrePilot", icon: "FaGit" },
-      ]
-    },
-  ];
+import {
+  FaAws,
+  FaCode,
+  FaDocker,
+  FaGit,
+  FaGithub,
+  FaHtml5,
+  FaJsSquare,
+  FaNodeJs,
+  FaPython,
+  FaReact,
+  FaServer,
+  FaTools,
+} from 'react-icons/fa';
+import {
+  SiAnsible,
+  SiEslint,
+  SiExpress,
+  SiFastapi,
+  SiJenkins,
+  SiJira,
+  SiNestjs,
+  SiNginx,
+  SiPostman,
+  SiPrettier,
+  SiPytorch,
+  SiScikitlearn,
+  SiSpringboot,
+  SiTailwindcss,
+  SiTerraform,
+  SiTensorflow,
+  SiTypescript,
+  SiVite,
+} from 'react-icons/si';
 
+const technologies = [
+  {
+    category: 'Frontend',
+    icon: FaCode,
+    tools: ['React', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'Vite'],
+  },
+  {
+    category: 'Backend',
+    icon: FaServer,
+    tools: ['Node.js', 'Express.js', 'NestJS', 'Springboot'],
+  },
+  {
+    category: 'DevOps & Infrastructure',
+    icon: FaTools,
+    tools: ['Docker', 'Nginx', 'Jenkins', 'Ansible', 'AWS', 'Terraform'],
+  },
+  {
+    category: 'AI & Data Science',
+    icon: FaPython,
+    tools: ['Python', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'FastAPI'],
+  },
+  {
+    category: 'Tools & Collaboration',
+    icon: FaGithub,
+    tools: ['Git', 'GitHub', 'Jira', 'Postman', 'ESLint', 'Prettier'],
+  },
+  {
+    category: 'Drones & UAV',
+    icon: FaTools,
+    tools: ['ArduPilot', 'LibrePilot'],
+  },
+];
+
+const toolIconMap = {
+  React: FaReact,
+  HTML: FaHtml5,
+  CSS: FaCode,
+  JavaScript: FaJsSquare,
+  TypeScript: SiTypescript,
+  'Tailwind CSS': SiTailwindcss,
+  Vite: SiVite,
+  'Node.js': FaNodeJs,
+  'Express.js': SiExpress,
+  NestJS: SiNestjs,
+  Springboot: SiSpringboot,
+  Docker: FaDocker,
+  Nginx: SiNginx,
+  Jenkins: SiJenkins,
+  Ansible: SiAnsible,
+  AWS: FaAws,
+  Terraform: SiTerraform,
+  Python: FaPython,
+  TensorFlow: SiTensorflow,
+  PyTorch: SiPytorch,
+  'Scikit-learn': SiScikitlearn,
+  FastAPI: SiFastapi,
+  Git: FaGit,
+  GitHub: FaGithub,
+  Jira: SiJira,
+  Postman: SiPostman,
+  ESLint: SiEslint,
+  Prettier: SiPrettier,
+};
+
+export default function ToolsTechnologies() {
   return (
     <section id="tools" className="section-wrap">
       <p className="section-kicker">Stack</p>
@@ -76,31 +106,53 @@ export default function ToolsTechnologies() {
         Modern technologies and tools I use to build scalable solutions
       </p>
 
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {technologies.map((tech) => (
-          <article
-            key={tech.category}
-            className="glass-panel rounded-3xl p-6 md:p-7"
-          >
-            <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-5">
-              {tech.category}
-            </h3>
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {technologies.map((group) => {
+          const CategoryIcon = group.icon;
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-              {tech.tools.map((tool) => (
-                <div
-                  key={tool.name}
-                  className="rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-900/45 px-3 py-3 text-center"
-                >
-                  <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-[0.08em]">
-                    {tool.name}
-                  </p>
+          return (
+            <article
+              key={group.category}
+              className="glass-panel group relative overflow-hidden rounded-3xl p-6 md:p-7"
+            >
+              <div className="pointer-events-none absolute right-0 top-0 h-24 w-24 rounded-full bg-sky-300/20 blur-2xl dark:bg-sky-500/20" />
+
+              <div className="mb-5 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900">
+                    <CategoryIcon className="h-4 w-4" />
+                  </div>
+                  <h3 className="text-lg md:text-xl font-semibold text-slate-900 dark:text-slate-100">
+                    {group.category}
+                  </h3>
                 </div>
-              ))}
-            </div>
-          </article>
-        ))}
+                <span className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+                  {group.tools.length} tools
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {group.tools.map((tool) => {
+                  const ToolIcon = toolIconMap[tool] || FaTools;
+
+                  return (
+                    <div
+                      key={tool}
+                      className="flex items-center gap-2.5 rounded-xl border border-slate-200/90 dark:border-slate-700/70 bg-white/85 dark:bg-slate-900/55 px-3 py-2.5"
+                    >
+                      <ToolIcon className="h-4 w-4 text-slate-700 dark:text-slate-300" />
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                        {tool}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
 }
+
